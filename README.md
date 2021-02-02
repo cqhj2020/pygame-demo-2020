@@ -3,7 +3,7 @@ a python pygame demo collection
 
 <h3>1、pygame.display.set_mode</h3>
 
-<p><strong>set_mode</strong>会返回一个Surface对象，代表了在桌面上出现的那个窗口，三个参数第一个为元祖，代表分 辨率（必须）；第二个是一个标志位，具体意思见下表，如果不用什么特性，就指定0；第三个为色深。</p>
+<p><strong>set_mode</strong>会返回一个Surface对象，代表了在桌面上出现的那个窗口，三个参数第一个为元祖，代表分辨率（必须）；第二个是一个标志位，具体意思见下表，如果不用什么特性，就指定0；第三个为色深。</p>
 <table>
 <thead>
 <tr>
@@ -39,3 +39,7 @@ a python pygame demo collection
 </tbody>
 </table>
 <p><strong>convert</strong>函数是将图像数据都转化为Surface对象，每次加载完图像以后就应该做这件事件（事实上因为 它太常用了，如果你不写pygame也会帮你做）；<strong>convert_alpha</strong>相比convert，保留了Alpha 通道信息（可以简单理解为透明的部分），这样我们的光标才可以是不规则的形状。</p>
+
+<h3>2、screen.blit/h3>
+
+<strong>blit</strong>是个重要函数，第一个参数为一个Surface对象，第二个为左上角位置。画完以后一定记得用<strong>update</strong>更新一下，否则画面一片漆黑。
