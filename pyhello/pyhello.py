@@ -22,6 +22,8 @@ screen = pygame.display.set_mode((640, 480), 0, 32)
 #创建了一个窗口
 pygame.display.set_caption("Hello, World!")
 #设置窗口标题
+
+pygame.mouse.set_visible(False)
  
 background = pygame.image.load(background_image_filename).convert()
 mouse_cursor = pygame.image.load(mouse_image_filename).convert_alpha()
