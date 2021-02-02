@@ -40,6 +40,6 @@ a python pygame demo collection
 </table>
 <p><strong>convert</strong>函数是将图像数据都转化为Surface对象，每次加载完图像以后就应该做这件事件（事实上因为 它太常用了，如果你不写pygame也会帮你做）；<strong>convert_alpha</strong>相比convert，保留了Alpha 通道信息（可以简单理解为透明的部分），这样我们的光标才可以是不规则的形状。</p>
 
-<h3>2、screen.blit/h3>
+<h3>2、screen.blit</h3>
 
 <strong>blit</strong>是个重要函数，第一个参数为一个Surface对象，第二个为左上角位置。画完以后一定记得用<strong>update</strong>更新一下，否则画面一片漆黑。
