@@ -187,6 +187,11 @@ def runGame():#实际的游戏代码都在runGame中
                 return #在这种情况下 runGame()函数将被返回。
 
         for event in pygame.event.get():  #事件处理循环负责玩家旋转下落的砖块，移动下落的砖块。
+        
+            if event.type == KEYDOWN:
+                if event.key == K_x:
+                    sys.exit()
+                                     
                 #松开一个剪头键将会把movingLeft或movingRight或movingDown变量设置为False,表示玩家不再想
                 #要让砖块朝着该方向移动。随后的代码将会根据这些“moving”变量中的Boolean值来确定做什么。
             if event.type == KEYUP:#当按键弹起的时候响应KEYUP事件
@@ -229,6 +234,10 @@ def runGame():#实际的游戏代码都在runGame中
                         fallingPiece['y'] =  fallingPiece['y'] +1  #移动
                     lastMoveDownTime = time.time() #lastMoveDownTime重新设置为当前时间。随后将检查这些变量，以确保只要按下向下箭头键的时候，砖块就
                     #会以较快的速率下降
+
+                elif event.key == K_SPACE :
+                    while isValidPosition(board, fallingPiece, adjY=1):
+                        fallingPiece['y'] = fallingPiece['y'] + 1
 
         if (movingLeft or movingRight) and time.time() - lastMoveSidewaysTime > MOVESIDEWAYSFREQ:#MOVESIDEWAYSFREQ = 0.15 按向左或向右超过0.15秒
             if movingLeft and isValidPosition(board, fallingPiece, adjX=-1):#如果是向左方向键，并且向左一个位置有效
@@ -414,6 +423,11 @@ def showTextScreen(text):
     pressKeySurf, pressKeyRect = makeTextObjs('Press a key to play.', BASICFONT, TEXTCOLOR)
     pressKeyRect.center = (int(WINDOWWIDTH / 2), int(WINDOWHEIGHT / 2) + 100)
     DISPLAYSURF.blit(pressKeySurf, pressKeyRect)
+
+    pressKeySurf, pressKeyRect = makeTextObjs('Press X to exit.', BASICFONT, TEXTCOLOR)
+    pressKeyRect.center = (int(WINDOWWIDTH / 2), int(WINDOWHEIGHT / 2) + 130)
+    DISPLAYSURF.blit(pressKeySurf, pressKeyRect)
+
     while checkForKeyPress() == None:
         pygame.display.update()
         FPSCLOCK.tick()
